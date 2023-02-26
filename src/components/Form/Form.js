@@ -3,46 +3,31 @@ import MainNavBar from "../MainNavBar/MainNavBar";
 import "./Form.css";
 
 const initialValues = {
-    uname: "",
-    fname: "",
-    phone: "",
-    address: "",
-   
-}
-
+  uname: "",
+  fname: "",
+  phone: "",
+  address: "",
+  radio: "",
+  dropdown: "",
+};
 
 const Form = () => {
-    // const [userName, setUserName] = useState ('')
-    // const [update, setUpdate] = useState(userName)
+  const [values, setValues] = useState(initialValues);
 
-    // const handleChange = (e) =>{
-    //     setUserName(e.target.value)
-    // }
+  const handleField = (e) => {
+    const { name, value } = e.target;
 
-  
-    
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+  // console.log(values)
 
-
-    const [values, setValues] = useState(initialValues);
-
-    const handleField = (e) =>{
-        const {name, value}  = e.target
-        
-        setValues({
-            ...values,
-            [name] : value,
-            
-        });
-        
-    }
-    console.log(values)
-
-
-      const handleClick=()=>{
-        setValues(values)
-    }
-    console.log(values)
-
+  const handleClick = () => {
+    setValues(values);
+  };
+  console.log(values);
 
   return (
     <div>
@@ -60,7 +45,6 @@ const Form = () => {
             onChange={handleField}
           />
           <span className="text">Full Name</span>
-          
           <input
             className="input"
             type="text"
@@ -68,7 +52,6 @@ const Form = () => {
             value={values.fname}
             onChange={handleField}
             id=""
-           
             placeholder="Enter Your Full Name"
           />
           <span className="text">Phone No</span>
@@ -93,21 +76,41 @@ const Form = () => {
           />
           <span className="text">Gender</span>
           <div className="flex">
-            <input type="radio" name="" id="" placeholder="male" />{" "}
+            <input
+              type="radio"
+              name="radio"
+              value="Male"
+              onChange={handleField}
+              id=""
+              placeholder="male"
+            />{" "}
             <span>Male</span>
-            <input type="radio" name="" id="" placeholder="female" />{" "}
+            <input
+              type="radio"
+              name="radio"
+              value="Female"
+              onChange={handleField}
+              id=""
+              placeholder="female"
+            />{" "}
             <span>Female</span>
           </div>
           <label className="text">Choose Your Degree</label>
-          <select className="options" name="" id="">
-            <option value="">SSC</option>
-            <option value="">HSC</option>
-            <option value="">BSC</option>
+          <select
+            className="options"
+            name="dropdown"
+            onChange={handleField}
+            id=""
+          >
+            <option value="SSC">SSC</option>
+            <option value="HSC">HSC</option>
+            <option value="BSC">BSC</option>
           </select>
-          <button className="btn" onClick={handleClick} >Submit</button>
+          <button className="btn" onClick={handleClick}>
+            Submit
+          </button>
         </div>
       </div>
-     
     </div>
   );
 };
