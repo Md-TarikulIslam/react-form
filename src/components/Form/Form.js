@@ -62,7 +62,12 @@ const Form = () => {
     }
   };
   const handleClick = () => {
-    initialValuesError(error) ? checkValidation() : setList(values);
+    checkValidation();
+    const { uname, phone, address, fname, dropdown, radio } = values;
+
+    if (uname && phone && address && fname && dropdown && radio) {
+      setList(values);
+    }
   };
 
   const handleRefresh = (e) => {
