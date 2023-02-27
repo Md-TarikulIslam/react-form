@@ -1,0 +1,9 @@
+.details{
+    /* border: 1px solid red; */
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
